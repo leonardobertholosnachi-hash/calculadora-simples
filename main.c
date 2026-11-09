@@ -5,6 +5,7 @@ int main() {
     int NUMERO;
     float num1, num2;
     char SN = 's';
+    char entrada[100], extra;
 
     do {
         printf("===============================\n");
@@ -18,12 +19,15 @@ int main() {
         printf("5. Sair\n");
         printf("Opção:\n");
 
-        scanf("%d", &NUMERO);
+        while(1) {
+            scanf(" %99[^\n]", entrada);
 
-        if(NUMERO < 1 || NUMERO > 5) {
-            printf("Opção inválida! Tente novamente.\n");
-            SN = 's';
-            continue;
+            if(sscanf(entrada, "%d %c", &NUMERO, &extra) == 1 && NUMERO >= 1 && NUMERO <= 5) {
+                break;
+            }
+
+            printf("Opção inválida! Digite um número inteiro de 1 a 5.\n");
+            printf("Opção:\n");
         }
 
         if(NUMERO == 1) {
